@@ -1,4 +1,4 @@
-/* 1558. Jamaica - http://acm.timus.ru/problem.aspx?num=1588
+/* 1558. Jamaica - http://acm.timus.ru/problem.aspx?num=1558
  *
  * Strategy:
  * For each city A: iterate through all other cities X and maintain a hash map with the keys being
