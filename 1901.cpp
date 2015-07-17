@@ -14,36 +14,36 @@
 #include <vector>
 #include <algorithm>
 
-void main()
+int main()
 {
-	int n, s;
-	scanf("%d %d", &n, &s);
-	std::vector<int> ans;
-	std::vector<int> v; // Input
-	ans.reserve(n);
-	v.reserve(n);
-	while(n--)
-	{
-		int x;
-		scanf("%d", &x);
-		v.push_back(x);
-	}
-	int t = 0;
-	std::sort(v.begin(), v.end());
-	int front = 0;
-	int back = v.size() - 1;
-	while(back >= front)
-	{
-		t++;
-		if(v[front] + v[back] <= s && back > front)
-		{
-			ans.push_back(v[front++]); 
-			ans.push_back(v[back--]);
-		}
-		else
-			ans.push_back(v[back--]);
-	}
-	printf("%d\n", ans.size());
-	for(auto it = ans.begin(); it < ans.end(); it++)
-		printf("%d ", *it);
+    int n, s;
+    scanf("%d %d", &n, &s);
+    std::vector<int> ans;
+    std::vector<int> v; // Input
+    ans.reserve(n);
+    v.reserve(n);
+    while(n--)
+    {
+        int x;
+        scanf("%d", &x);
+        v.push_back(x);
+    }
+    int t = 0;
+    std::sort(v.begin(), v.end());
+    int front = 0;
+    int back = v.size() - 1;
+    while(back >= front)
+    {
+        t++;
+        if(v[front] + v[back] <= s && back > front)
+        {
+            ans.push_back(v[front++]);
+            ans.push_back(v[back--]);
+        }
+        else
+            ans.push_back(v[back--]);
+    }
+    printf("%d\n", ans.size());
+    for(auto it = ans.begin(); it < ans.end(); it++)
+        printf("%d ", *it);
 }
