@@ -1,13 +1,14 @@
 /* 1901. Space Elevators - http://acm.timus.ru/problem.aspx?num=1901
  *
  * Strategy:
- * Sort the list and greedily choose the largest and smallest values to go together. This works
- * since if there is another value compatible with the largest, this one can still be paired up
- * with any other value.
+ * Sort the list and keep comparing the largest and smallest numbers. If they exceed s, add them to
+ * the beginning of the solution sequence, otherwise add the smallest number last. Calculate
+ * the number of trips in constant time by using the fact that all smallest numbers are pairwise
+ * lower to or equal than s (match), since they were deemed to match with larger numbers.
  *
  * Performance:
- * O(n log n). This is not optimal since we can radix sort the numbers. I can't test the
- * performance of this algorithm since Timus is down.
+ * O(n log n), but can be improved to O(n) using radix sort; still, the solution is accepted in
+ * 0.062 seconds (and uses 1044 KB) which is very fast compared to almost all other solutions.
  */
 
 #include <stdio.h>
@@ -16,34 +17,45 @@
 
 int main()
 {
-    int n, s;
+    int n, s, t = 0;
     scanf("%d %d", &n, &s);
-    std::vector<int> ans;
-    std::vector<int> v; // Input
-    ans.reserve(n);
+
+    std::vector<int> v;
+    std::vector<int> ans(n);
     v.reserve(n);
-    while(n--)
+
+    for(int i = 0; i < n; i++)
     {
         int x;
         scanf("%d", &x);
         v.push_back(x);
     }
-    int t = 0;
     std::sort(v.begin(), v.end());
-    int front = 0;
-    int back = v.size() - 1;
-    while(back >= front)
+    int front = 0, back = n - 1; // Input iterators
+    int sfront = 0, sback = n - 1; // Output iterators
+
+    while(front <= back)
     {
-        t++;
-        if(v[front] + v[back] <= s && back > front)
-        {
-            ans.push_back(v[front++]);
-            ans.push_back(v[back--]);
+        if(v[front] + v[back] > s && front != back)
+        {   // Put numbers that don't go together in the beginning, with the smallest first
+            t += 2;
+            ans[sfront++] = v[front++];
+            ans[sfront++] = v[back--];
         }
         else
-            ans.push_back(v[back--]);
+            ans[sback--] = v[front++];
     }
-    printf("%d\n", ans.size());
+
+    // The numbers that we put in last all go together, but in the seam between the clashing and the
+    // last numbers we could get an additional match:
+    int l;
+    if(sback < n-1 && sback >= 0 && ans[sback] + ans[sback+1] <= s)
+        l = (n-1-sback)-1;
+    else
+        l = n-1-sback;
+    t += l/2 + l%2;
+    printf("%d\n", t);
     for(auto it = ans.begin(); it < ans.end(); it++)
         printf("%d ", *it);
+    return 0;
 }
