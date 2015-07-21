@@ -1,69 +1,71 @@
-/* 1124. Mosaic - http://acm.timus.ru/problem.aspx?num=1124
+/* 1185. Wall - http://acm.timus.ru/problem.aspx?num=1185
  *
  * Strategy:
- * Represent the box and colors as a graph where each box is a node, and each color not in
- * its correct box is an edge points toward its correct box. We are to find the shortest path
- * (Euler path) through the graph.
- *   Since the input is a permutation, this permutation can be expressed as a sequence of
- * transpositions of the input. Each transposition of two nodes in the graph keeps their degrees
- * at 0. Since all nodes then have even degrees, we have an Euler path through each (connected)
- * component of the graph. This means we only need to make extra jumps to each component of the
- * graph besides the one we start in, so the final result is the number of components of the graph
- * above 1, plus the number of edges.
+ * Calculate the length of the convex hull and add 2piL to this value. This works since we
+ * essentially construct the wall as the convex hull of the original walls, but extend each
+ * segment outwards L feet. The remaining gaps are circle segments whose total sum becomes
+ * 2piL.
  *
  * Performance:
- * O(MN). This is optimal since the input is of this size. The test cases run in 0.046s time and
- * use 1380 KB of memory.
+ * O(n log n), which runs in 0.001s using 284KB of memory.
  */
-#include <cstdio>
+
+#include <stdio.h>
 #include <vector>
-#include <stack>
+#include <algorithm>
+#include <cmath>
+
+struct point
+{
+    double x, y;
+    point(double x, double y) : x(x), y(y) { }
+    point() {};
+};
+
+double dist(const point& a, const point& b)
+{
+    return std::sqrt((b.x-a.x)*(b.x-a.x)+(b.y-a.y)*(b.y-a.y));
+}
+
+bool rightTurn(const point& a, const point& b, const point& c)
+{
+    return (a.x-b.x)*(c.y-b.y)-(a.y-b.y)*(c.x-b.x) >= 0;
+}
+
+template <typename T> double calcHullPartLength(T begin, T end) // Graham scan
+{   // s is the stack containing our tentative hull
+    std::vector<point> s(std::distance(begin, end));
+    int t; // Top of the stack
+    for(t = 0; t < 2; t++)
+        s[t] = *begin++;
+    while(begin < end)
+    {
+        while(t >= 2 && !rightTurn(s[t-2], s[t-1], *begin))
+            t--; // Convexify by popping the vertex that contributes to a left turn
+        s[t++] = *begin++;
+    }
+    double ans = 0;
+    for(int i = 1; i < t; i++)
+        ans += dist(s[i], s[i-1]);
+    return ans;
+}
 
 int main()
 {
-    int M, N, e = 0; // Number of edges
-    scanf("%d %d", &M, &N);
-    std::vector<bool> vis(M+1, false); // Marks visited nodes when doing dfs
-    std::vector<std::vector<int>> adj(M+1); // Adjacency "matrix"
-
-    for(int i = 1; i <= M; i++)
+    int N, L;
+    scanf("%d %d", &N, &L);
+    std::vector<point> p;
+    p.reserve(N);
+    while(N--)
     {
-        adj[i].reserve(M);
-        for(int j = 1; j <= N; j++)
-        {
-            int x;
-            scanf("%d", &x);
-            if(x != i)
-            {   // Add an edge for every color not in its own box
-                e++;
-                adj[i].push_back(x);
-            }
-        }
+        int x, y;
+        scanf("%d %d", &x, &y);
+        p.push_back(point(x, y));
     }
-
-    int c = 0; // Number of connected components in the graph
-    std::vector<int> stack(M*N);
-    int top = 0;
-    for(int i = 1; i <= M; i++)
-    {   // Simple dfs; count the number of connected components
-        if(!vis[i] && !adj[i].empty())
-        {
-            c++;
-            stack[top++] = i;
-            while(top != 0)
-            {
-                int k = stack[--top];
-                vis[k] = true;
-                for(auto it = adj[k].begin(); it < adj[k].end(); it++)
-                {
-                    if(!vis[*it])
-                        stack[top++] = *it;
-                }
-            }
-        }
-    }
-
-    int ans = e + std::max(0, c-1);
-    printf("%d\n", ans);
-    return 0;
+    std::sort(p.begin(), p.end(), [] (const point& a, const point& b) 
+                                  { return (a.x == b.x) ? a.y < b.y : a.x < b.x; });
+    double ans = calcHullPartLength(p.begin(), p.end());
+    ans += calcHullPartLength(p.rbegin(), p.rend());
+    printf("%.0lf", ans+4*acos(0.0)*L); // If we round to the nearest foot, it's within 6 inches
+    return 0;                           // (and hence within 8 inches)
 }
