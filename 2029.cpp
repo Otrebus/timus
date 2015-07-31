@@ -50,3 +50,26 @@ int main()
     printf("%lld\n", f(v, std::vector<int> {0, 0, 0}, 0));
     return 0;
 }
+
+// Since f is tail recursive and the sorting is given by the input, here is a much shorter but 
+// somewhat less pedagogical(?) solution:
+
+long long pow2[51] = {1};
+
+int bettershorterfastermain()
+{
+    char inp[51], *input = inp; int len; long long ans = 0;
+    scanf("%d %s", &len, inp);
+    for(int i = 1; i < len; i++)
+        pow2[i] = pow2[i-1]*2;
+    for(int d = 0; len; len--)
+    {
+        int s = *(input+len-1) - 'A';
+        if(d == s)
+            continue;
+        ans += pow2[len-1];
+        d = 3-d-s;
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
