@@ -1,4 +1,4 @@
-/* 1923. Scary Politics. Version 3 - http://acm.timus.ru/problem.aspx?num=1923
+/* 1923. Scary Politics. - http://acm.timus.ru/problem.aspx?num=1923
  *
  * Strategy:
  * Repeatedly do a flood fill with the given alliance number in the appropriate corner, and
