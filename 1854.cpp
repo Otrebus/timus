@@ -3,11 +3,11 @@
  * Strategy:
  * Find all prime factors p1, p2, ... up to the cube root of the input number. Above this there are
  * at most two divisors remaining (since they are larger than the cube root). Next, (implicitly) 
- * calculate the number of divisors p1^(m1+1)+p2^(m2+1)+.. where mx is the multiplicity of each 
- * prime factor. To get an odd number of divisors, divide from the input the base of each
- * even factor of the number of divisors function. Then consider the two possible divisors above
- * the cube root - if they are unequal they have multiplicity 1 and thus contribute even factors,
- * into the number-of-divisor function so they are removed similarly.
+ * calculate the number of divisors (m1+1)*(m2+1)*.. where mx is the multiplicity of each prime
+ * factor. To get an odd number of divisors, divide from the input the base of each even factor of
+ * the number of divisors function. Then consider the two possible divisors above the cube root - 
+ * if they are unequal they have multiplicity 1 and thus contribute even factors, into the 
+ * number-of-divisor function so they are removed similarly.
  *
  * Performance:
  * O(n^(1/3)), runs in 0.031s and uses 192 KB of memory; one of the fastest solutions.
