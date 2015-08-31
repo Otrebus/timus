@@ -21,7 +21,7 @@ struct Entry
 {
     long long sum, min;
     Entry() : sum(0), min(0) { }
-    Entry(long long sum, long long min) : sum(sum), min(min) {}
+    Entry(long long sum, long long min) : sum(sum), min(min) { }
     Entry operator+ (const Entry& rhs)
     {
         return Entry(sum + rhs.sum, std::min(min, sum+rhs.min)); // The associative operation
@@ -57,7 +57,7 @@ int main()
     for(int i = 0; i < N; i++)
     {   // We map the input dates to a linear input array
         scanf("%d %d.%d %d:%d", &v, &day, &month, &hour, &minute);
-        input.push_back((((month* 31 + day)* 24 + hour)*60 + minute));
+        input.push_back((((month*31 + day)*24 + hour)*60 + minute));
         times.push_back(input.back());
         vs.push_back(v);
     }
