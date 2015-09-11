@@ -29,9 +29,9 @@ struct ratio
     ratio() { }
 
     bool operator== (const ratio& p) const
-	{
+    {
         return x == p.x && y == p.y;
-	}
+    }
 };
 
 struct ratiohash // for std::unordered_map
