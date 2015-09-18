@@ -6,7 +6,7 @@
  * (in this case a segment tree).
  *
  * Performance:
- * O(n + mlog n), running the tests at a leisurely time of 1.435s, using 9716KB memory.
+ * O(n + mlog n), running the tests in 0.608s, using 9668KB memory.
  */
 
 #include <algorithm>
@@ -20,18 +20,29 @@ class SegmentTree
     int* A;
     int size;
 private:
-    void update(int node, int nodeLeft, int nodeRight, int left, int right, int value)
-    {   // Alternate name might be rangeSum - adds value to all elements between left and right
-        if(right < nodeLeft || left > nodeRight)
-            return;
-        if(left == nodeLeft && right == nodeRight)
-            A[node] = (A[node] + value) % 1000000007;
-        else if(right <= nodeRight || left >= nodeLeft)
+    void updateimp(int i, int value) // Updates all values from 1 to i
+    {
+        int l = 1, r = size;
+        int node = 1;
+        while(true)
         {
-            int lc = node*2, rc = node*2+1;
-            int mid = nodeLeft + (nodeRight-nodeLeft+1)/2;
-            update(lc, nodeLeft, mid-1, std::max(left, nodeLeft), std::min(right, mid-1), value);
-            update(rc, mid, nodeRight, std::max(left, mid), std::min(right, nodeRight), value);
+            int mid = l+(1+r-l)/2;
+            if(i == l && i == r)
+            {
+                A[node] = (A[node] + value) % 1000000007;
+                break;
+            }
+            if(i >= mid)
+            {
+                A[node*2] = (A[node*2] + value) % 1000000007;
+                node = node*2 + 1;
+                l = l + (1+r-l)/2;                
+            }
+            else if(i < mid)
+            {
+                r = r - (r-l)/2-1;
+                node = node*2;
+            }
         }
     }
 
@@ -72,7 +83,9 @@ public:
 
     void update(int left, int right, int value)
     {
-        update(1, 1, size, left, right, value);
+        updateimp(right, value);
+        if(left > 1)
+            updateimp(left-1, 1000000007-value);
     }
 };
 
@@ -86,12 +99,23 @@ struct node
 node nodes[100001];
 int map[100001]; // Maps the supplied input node id numbers to the bfs-made id numbers
 
+inline int getint()
+{
+    int ret = 0;
+    int ch;
+    while(!isdigit(ch = getc(stdin)));
+    ret = ch-'0';
+    while(isdigit(ch = getc(stdin)))
+        ret = ret*10+ch-'0';
+    return ret;
+}
+
 int main()
 {
     int n, m;
     std::queue<node*> q;
     std::vector<int> init;
-    scanf("%d", &n);
+    n = getint();
     SegmentTree t(n);
 
     for(int i = 1; i <= n; i++)
@@ -99,15 +123,14 @@ int main()
 
     for(int i = 1; i <= n; i++)
     {
-        int x;
-        scanf("%d", &x);
+        int x = getint();
         init.push_back(x); // We have to wait with assigning this since we have to do a bfs
     }                      // to figure out the new node numbering first
 
     for(int i = 0; i < n-1; i++)
     {
         int x, y;
-        scanf("%d %d", &x, &y);
+        x = getint(); y = getint();
         nodes[x].children.push_back(nodes+y);
         nodes[y].children.push_back(nodes+x);
     }
@@ -143,11 +166,11 @@ int main()
     for(int i = 1; i <= n; i++)
         t.update(map[i], init[i-1]);
 
-    scanf("%d", &m);
+    m = getint();
     while(m--)
     {
         int option, number;
-        scanf("%d %d", &option, &number);
+        option = getint(); number = getint();
         if(option == 1)
         {
             auto node = nodes+number;
