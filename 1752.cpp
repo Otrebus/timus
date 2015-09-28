@@ -8,8 +8,8 @@
  * such branch.
  *
  * Performance:
- * O(n log n) (for the parent array usage, otherwise linear), running the tests in 0.234s using 
- * 5528kb memory.
+ * O(n log n) (for the parent array usage, otherwise linear), running the tests in 0.156s using 
+ * 4896kb memory.
  */
 
 #include <stdio.h>
@@ -30,10 +30,9 @@ int a = 0;
 node nodes[20001];
 
 // Assigns depth information for every node
-void dfs(node* n)
+void dfs(node* const n)
 {
     n->deepestChild[0] = n->deepestChild[1] = &nodes[0];
-    std::vector<node*> actualChildren;
 
     // Populate depth array
     node* p = n->parent[0];
@@ -44,22 +43,15 @@ void dfs(node* n)
     }
 
     // Assign child depths and remove the parent from every neighbor array
-    for(int i = 0; i < n->children.size(); i++)
-    {
-        auto child = n->children[i];
-        if(child != n->parent[0])
-        {
-            child->parent.push_back(n);
-            actualChildren.push_back(child);
-            child->depth = n->depth + 1;
-        }
-    }
-    n->children = std::move(actualChildren);
+    if(n->parent[0])
+        n->children.erase(std::find(n->children.begin(), n->children.end(), n->parent[0]));
 
     // Recurse and assign the two deepest children
     for(int i = 0; i < n->children.size(); i++)
     {
-        auto child = n->children[i];
+        node* const child = n->children[i];
+        child->depth = n->depth + 1;
+        child->parent.push_back(n);
         dfs(child);
         if(child->maxDepth > n->deepestChild[1]->maxDepth)
         {
@@ -77,7 +69,7 @@ void dfs(node* n)
 }
 
 // Calculates depth array positions and granduncles
-void dfs2(node* n)
+void dfs2(node* const n)
 {
 	// This is part of the longest path from our parent to a child, just extend the array
     if(n->parent[0] && n->parent[0]->deepestChild[0] == n)
@@ -108,9 +100,9 @@ void dfs2(node* n)
         dfs2(n->children[i]);
 }
 
-int find(int n, int dist)
+inline int find(int n, int dist)
 {
-    auto node = &nodes[n];
+    const node* node = &nodes[n];
     if(dist <= node->maxDepth - node->depth) // Node can be found below us
         return A[node->depthArrayPos + dist]->id;
     else if(dist < node->depth) // Node can be found above us
@@ -154,8 +146,7 @@ inline int getint()
 
 int main()
 {
-    int n, q;
-    n = getint(); q = getint();
+    const int n = getint(); int q = getint();
     
     for(int i = 1; i < n; i++)
     {
@@ -164,7 +155,7 @@ int main()
         nodes[y].children.push_back(&nodes[x]);
     }
     init(n);
-    for(int i = 0; i < q; i++)
+    while(q--)
     {
         int x = getint(), y = getint();
         printf("%d\n", find(x, y));
