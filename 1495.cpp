@@ -5,7 +5,8 @@
  * to prune the search tree.
  *
  * Performance:
- * O(N) since we insert at most N-1 numbers of different moduli into the queue.
+ * O(N) since we insert at most N-1 numbers of different moduli into the queue. The test cases are
+ * executed in 0.015s (rated 30/916) using 11616KB memory.
  */
 
 #include <string>
