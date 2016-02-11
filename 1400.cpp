@@ -5,7 +5,7 @@
  * possible starting location, and output the location that gives the lowest sum distance.
  *
  * Performance:
- * O(N^2), runs the test cases in 0.015s using 296KB memory.
+ * O(N^2), runs the test cases in 0.015s using 296KB memory. Rated 20/741.
  */
 
 #include <stdio.h>
