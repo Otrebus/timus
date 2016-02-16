@@ -1,4 +1,4 @@
-/* 1414. Yachts - http://acm.timus.ru/problem.aspx?num=1414
+/* 1414. Astronomical Database - http://acm.timus.ru/problem.aspx?num=1414
  *
  * Strategy:
  * Trie.
