@@ -83,5 +83,4 @@ int main()
     printAns(str, 0, n);  // Print the string to an
     str[ans[0][n].l] = 0; // Zero-terminate
     printf("%s\n", str);
-    std::system("pause");
 }

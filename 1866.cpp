@@ -73,5 +73,4 @@ int main()
             type = lineType;
     }
     std::cout << type;
-    std::system("pause");
 }

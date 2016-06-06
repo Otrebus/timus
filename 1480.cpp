@@ -40,5 +40,4 @@ int main()
         }
         printf("\n");
     }
-    std::system("pause");
 }

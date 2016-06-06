@@ -38,5 +38,4 @@ int main()
         printf("First player wins flying to airport %d", min);
     else
         printf("First player loses");
-    std::system("pause");
 }

@@ -171,5 +171,4 @@ int main()
         }
     }
     std::cout << (std::string) A[M];
-    std::system("pause");
 }
