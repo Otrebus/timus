@@ -1,7 +1,7 @@
 /* 1261. Tips - http://acm.timus.ru/problem.aspx?num=1261
  *
  * Strategy:
- * Brute-force - try all sums of powers of 3 up to N when N < (3^K-1)/2.
+ * Brute-force - try all sums of powers of 3 up to 3^k for (3^k-1)/2 < N
  *
  * Performance:
  * O(N log N), runs the test cases in 0.001s using 240KB memory.
