@@ -41,9 +41,9 @@ int main()
         for(int k = 1; k <= K; k++)
         {
             double max = 0;
-            for(int d = 1; d <= n; d++) // The amount of senators to kill
+            for(int d = 1; d <= n; d++) // The number of senators to kill
             {
-                // Calculate the expected value; i is the amount of honest senators that get killed
+                // Calculate the expected value; i is the number of honest senators that get killed
                 double res = 0;
                 // Each term is the number of ways to choose i from the honest senators, multiplied
                 // by the number of ways to choose the remaining d-i from the spy senators

@@ -2,7 +2,7 @@
  *
  * Strategy:
  * Treat each constraint as an edge in a graph, and check that the graph is two-colorable. Then,
- * go through each component of the graph and note the difference in the amount of both colors
+ * go through each component of the graph and note the difference in the number of both colors
  * (a component of 5 black and 2 white nodes would have a difference of 3). For color differences
  * d1 .. dn, solve the equation +/-d1 +/- ... +/- dn = 0, to figure out which color of nodes of
  * each component to send to which solution set.

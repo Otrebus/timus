@@ -3,7 +3,7 @@
  * Strategy:
  * The length of the code word determines the nature of its corruption, so each case is handled
  * separately. The algorithms are straightforward and fast by using the fact that removing a digit 
- * from a keyword reduces its checksum by the amount of ones to the right of it (together with the 
+ * from a keyword reduces its checksum by the number of ones to the right of it (together with the 
  * effect of the removed digit), and the opposite if we add a digit.
  *
  * Performance:

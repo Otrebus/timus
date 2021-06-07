@@ -15,7 +15,7 @@
  * cycle by having that edge as the unique part of the cycle and only using the spanning tree edges
  * as the rest of the cycle, as described above. Now, assume that we can add a second cycle into the
  * solution set using this edge (cycles not using this edge could have been identified before this
- * step, which would have violated our assumption that we have identified the maximum amount of
+ * step, which would have violated our assumption that we have identified the maximum number of
  * cycles at step k, so only the currently added edge can give rise to another cycle). Let the
  * notation [v, u] denote some chain of nodes from v to u inclusive. Assume without loss of
  * generality that the first cycle consists of the original node [u1, u2] followed by a continuous
@@ -26,10 +26,10 @@
  * were used by the first cycle), the unique edge must exist somewhere in [s1, s2]. But that means
  * that the cycle [s1, s2] followed by T back into [s1, s2] would also have been a new unique cycle,
  * and since this cycle already existed before step k+1, we arrive at a contradiction by violating
- * the induction assumption of having identified the maximum amount of cycles. Hence, only one
+ * the induction assumption of having identified the maximum number of cycles. Hence, only one
  * cycle can be added per each edge extraneous to the minimum spanning tree. 
  *   The number of edges extraneous to the spanning tree(s) of a graph is M - N + C, where C is the
- * number of components of the graph, so this is also the amount of unique cycles that we will
+ * number of components of the graph, so this is also the number of unique cycles that we will
  * identify. 
  * In actually constructing the solution, we conceptually build the minimum spanning tree at the
  * same time as we add solution edges in a single depth-first search. Whenever we run into a node

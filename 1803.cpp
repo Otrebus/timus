@@ -2,7 +2,7 @@
  *
  * Strategy:
  * Represent each price as an array of denominations, and when summing two prices together, add
- * together the amount of bills in each denomination, replacing to higher denominations whenever
+ * together the number of bills in each denomination, replacing to higher denominations whenever
  * we can. Optimize by combining the notes [1, p^1, p^2, p^3, p^4, ..., p^x ] for some
  * x into a new "superbasis" which replaces our earlier p. Precalculate a map which translates
  * how many real bills each number of bills within this superbasis correspond to.
@@ -21,7 +21,7 @@ int Ap[20]; // The number of actual bills within each real denomination used for
             // number of notes in the superbasis denomination, used to calculate the above array
 int l, n, k, p; // Number of denominations used for our values, the input, and the superbasis
 
-int add(int* a, int* b) // Adds together two terms and calculates the amount of notes used
+int add(int* a, int* b) // Adds together two terms and calculates the number of notes used
 {
     int ret = 0;
     for(int i = 0; i < l; i++)

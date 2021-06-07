@@ -7,7 +7,7 @@
  * resulting vector back to the origin equals the third input number.
  *
  * Performance:
- * O(a + b), assuming that there are less than a quadratic amount of triplets for any given
+ * O(a + b), assuming that there are less than a quadratic number of triplets for any given
  * integer. Runs the test cases in 0.187s using 396KB memory.
  */
 

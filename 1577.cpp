@@ -4,7 +4,7 @@
  * Dynamic programming. Let A[i][j] be the solution for the substrings that end at indices i and j.
  * We can reach A[i][j] by either adding the last character from the first or second substrings, or
  * if the previous two substrings match, both at the same time. We keep track of the length of the
- * solution and make sure we only propagate the solution with the shortest amount of characters.
+ * solution and make sure we only propagate the solution with the shortest number of characters.
  *
  * Performance:
  * Quadratic in the size of the input, runs the tests in 0.031s using 31576KB memory (rated 6/608).

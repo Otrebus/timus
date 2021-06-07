@@ -11,7 +11,7 @@
  * 
  *   A[i, j, k] = j*A[j-1, i, k] + k*A[k-1, i, j].
  * 
- * Now let B[i, j, k] be the number of ways we can travel between the islands but where we visit 
+ * Now let B[i, j, k] be the number of ways we can travel between the islands but where we visit
  * the last (unique) port at islands j or k. This is the number of valid paths requested by the
  * problem.
  *   Let's try to get a recurrence relation for B. If a valid path for the case of 3 ports on the 
@@ -30,7 +30,7 @@
  *   A[i+1, j, k] - B[i+1, j, k] = B[i, j, k]*(i+1)
  *
  * Or (if we translate i+1 into i) the difference between the number of invalid and valid paths for
- * the case of i ports on the first island equals i times the amount of valid paths for i-1 ports 
+ * the case of i ports on the first island equals i times the number of valid paths for i-1 ports
  * on the first island. We can now plot down these functions in code.
  *   Since the numbers involved grow greater than what 64 bits can handle, we use a custom big
  * integer class, and we also memoize the values in the recursive functions.

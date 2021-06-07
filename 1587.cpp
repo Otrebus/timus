@@ -5,7 +5,7 @@
  * product of these numbers and compare against the maximum. If there is an odd number of digits
  * compute the product of the span prefix before the last negative number, and the span suffix
  * after the first negative number and compare these against the maximum. A big integer class
- * is used and to minimize the amount of multiplications, we pre-multiply every product in chunks
+ * is used and to minimize the number of multiplications, we pre-multiply every product in chunks
  * up to the base of the big integer.
  *
  * Performance:

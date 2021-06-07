@@ -2,8 +2,8 @@
  *
  * Strategy:
  * First, assume that the factory is producing at full capacity throughout the period and calculate
- * the amount of yachts sold given the rules, which is the first answer. With this strategy, there
- * will be an amount of yachts in storage at the end of the period, which serve no purpose but
+ * the number of yachts sold given the rules, which is the first answer. With this strategy, there
+ * will be a number of yachts in storage at the end of the period, which serve no purpose but
  * increase the storage cost, so "continuously" remove one yacht/month worth of production from as
  * early as possible in the period (as early as possible is always the first month with 0 yachts in
  * storage as we keep removing production).
@@ -22,10 +22,10 @@ int main()
     scanf("%d %d", &n, &d);
     std::vector<int> A(n); // Purchasers of that month
     std::vector<long long> S(n); // Total yachts in storage that month
-    std::vector<int> Z(n); // The smallest amount of yachts in storage after this month
-    long long stored = 0, sold = 0, cost = 0; // Total amount stored, sold, and storage cost
+    std::vector<int> Z(n); // The smallest number of yachts in storage after this month
+    long long stored = 0, sold = 0, cost = 0; // Total number stored, sold, and storage cost
 
-    // Read all data and calculate sellings and the amount of yachts in storage if we
+    // Read all data and calculate sellings and the number of yachts in storage if we
     // keep the production at max
     for(int i = 0; i < n; i++)
     {
@@ -47,7 +47,7 @@ int main()
             break;
         r = i;
     }
-    // Z[i] points to the index in S of the minimum amount of yachts in storage after i
+    // Z[i] points to the index in S of the minimum number of yachts in storage after i
     int m = n-1;
     for(int i = n-1; i >= r; i--)
     {
@@ -57,8 +57,8 @@ int main()
     }
     long long totred = 0; // If we remove one yacht/month production at some point i, all months
                           // after that we will have one yacht less in storage - totred reflects
-                          // what to subtract the S[i] values with to get the real amount stored
-    // Keep removing production from as early as possible until we have 0 amount stored at the
+                          // what to subtract the S[i] values with to get the real number stored
+    // Keep removing production from as early as possible until we have nothing in store at the
     // end of the period
     for(int i = r; i < n && S[n-1]-totred > 0; )
     {
@@ -68,7 +68,7 @@ int main()
         if(Z[i] == i)
             i++;
         else
-            i = Z[i]; // Jump to the month further ahead with the smallest amount of yachts stored
+            i = Z[i]; // Jump to the month further ahead with the smallest number of yachts stored
     }
     printf("%lld %lld", sold, cost);
     return 0;

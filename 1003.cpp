@@ -8,7 +8,7 @@
  * between two same-sized and positioned intervals, stop.
  *
  * Performance:
- * Linear in the amount of intervals (questions) given since the left endpoint and right endpoints
+ * Linear in the number of intervals (questions) given since the left endpoint and right endpoints
  * each cause at most one split each. The solution runs the test cases in 0.031s using 588KB memory.
  */
 

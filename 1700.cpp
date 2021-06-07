@@ -7,7 +7,7 @@
  * The remaining associations are then reported. 
  *
  * Performance:
- * O(m*M log M), where M is the maximum amount of associations for each object.
+ * O(m*M log M), where M is the maximum number of associations for each object.
  */
 
 #include <iostream>

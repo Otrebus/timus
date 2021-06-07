@@ -2,7 +2,7 @@
  *
  * Strategy:
  * Dynamic programming. Keep track of the probability of finishing a line of rockets after a certain
- * number of salvos (at an exact number of salvos or cumulatively up until that amount of salvos),
+ * number of salvos (at an exact number of salvos or cumulatively up until that number of salvos),
  * and build a solution on this, bottom up.
  *
  * Performance:

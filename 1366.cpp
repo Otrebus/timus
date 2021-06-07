@@ -12,7 +12,7 @@
  * S(i) = (i-1)*(S(i-1)+S(i-2)) where S(i) is the solution of the problem for input i.
  *
  * Performance:
- * O(n^2) since we use bigint arithmetic and the answer grows by a constant amount of digits per
+ * O(n^2) since we use bigint arithmetic and the answer grows by a constant number of digits per
  * iteration. Runs the test cases in 0.046s using 2664KB memory.
  */
 

@@ -33,7 +33,7 @@ struct node
 {
     int in; // Drinks drunk at last place we drank a drink
     int n; // Drinks you can drink this place
-    int out; // Last amount of drinks drunk when we could drink a drink
+    int out; // Last number of drinks drunk when we could drink a drink
     std::vector<node*> v;
 };
 

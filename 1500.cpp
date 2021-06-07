@@ -3,7 +3,7 @@
  * Strategy:
  * For each of the 2^K different combinations of licenses, do normal depth-first search to see if
  * the combination provides an admissible route and then report a minimal of all those combinations.
- * To speed things up, partition the combinations by the amount of licenses required and do binary
+ * To speed things up, partition the combinations by the number of licenses required and do binary
  * search.
  *
  * Performance:
@@ -61,7 +61,7 @@ int main()
     for(int mask = 0; mask < (1 << K); mask++)
         sc[bitcount(mask)].push_back(mask);
 
-    // Binary search over the amount of bits set
+    // Binary search over the number of bits set
     int left = 1, right = K, bestmask;
     while (right >= left) 
     {
@@ -69,7 +69,7 @@ int main()
         bool found = false;
         std::vector<int>& v = sc[mid];
 
-        // Loop over all bitmasks with this amount set
+        // Loop over all bitmasks with this number set
         for(int i = 0; i < v.size() && !found; i++)
             if(dfs(&nodes[0], v[i]))
                 found = bestmask = v[i];

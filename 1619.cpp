@@ -2,7 +2,7 @@
  *
  * Strategy:
  * Dynamic programming. Denote the solution for a given x = K, y = M by A(x, y). This number equals
- * the fraction of the total amount of paths that we can reach the coordinate (x, y) from the origin
+ * the fraction of the total number of paths that we can reach the coordinate (x, y) from the origin
  * without crossing the line x = y. If we denote the total number of paths from the origin to (x, y)
  * by B(x, y), then B(x, y) =  B(x-1, y) + B(x, y-1) = C(x + y, y) where C is the binomial
  * coefficient. The number of valid paths is A(x-1, y)B(x-1, y) + A(x, y-1)B(x, y-1). If we denote

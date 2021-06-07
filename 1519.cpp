@@ -14,7 +14,7 @@
  * represented by 00001221. Various other cross-sections can also be yielded from this, like
  * 00112332, 10010000, and even 12213443 by allowing part of the next level of the track peek up
  * and use the space at the zeroes. Each such cross-section that we can generate from 10012332 
- * will have m amount of tracks leading into it, so we increase the key each of the derived ones by 
+ * will have m number of tracks leading into it, so we increase the key each of the derived ones by 
  * m. The actual representation is made more packed since there are at most 6 track components that
  * can go through any given cross-section. Also, to keep track of the topology of the track and in
  * order to be able to join different components, a disjoint-set data structure is maintained in
@@ -772,7 +772,7 @@ int main()
 */
 
 // Below is yet another (but incorrect) solution that does not consider topology, so this one
-// actually generates the amount of ways to fill up the given area with an arbitrary number of
+// actually generates the number of ways to fill up the given area with an arbitrary number of
 // closed tracks.
 
 /*

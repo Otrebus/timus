@@ -7,9 +7,9 @@
  * i+1 digits long that has a dsqrt of (k+c), calculated mod 9, but skipping 0. For example,
  * dsqrt(88) = 1+6 = 7, and dsqrt(884) = dsqrt(8+8+4) = dsqrt(2+0) = 2. This means that for each
  * number i+1 digits long of some dsqrt d, ten different dsqrts of the number i digits long had
- * some 1 <= c <= 9 added to them that contribute to the amount of dsqrts d of length i+1, except 
+ * some 1 <= c <= 9 added to them that contribute to the number of dsqrts d of length i+1, except 
  * for the number with dsqrt of 0, which only contributed a single number. Hence |S_(i+1)(k)| =
- * 10*|S_(i)(k)| + 1. The amount of 2*i digit numbers that have the dsqrt of the first half and
+ * 10*|S_(i)(k)| + 1. The number of 2*i digit numbers that have the dsqrt of the first half and
  * second half equal is |S_(i)(k)|^2 for each k, which gives 9*|S_(i)(k)|^2 in total, plus one
  * for the dsqrt of 0. For each i from 1 and up this gives the results 10, 1090, 110890, 
  * 11108890, 1111088890, etc, which is printed out by the program below.

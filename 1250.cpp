@@ -50,7 +50,7 @@ void fill(int x, int y, std::vector<std::pair<int, int>>& v, int& zone)
 
 // Does depth-first search from the body given by the coordinates and any unvisited bodies
 // that it is adjacent to, while assuming that those unvisited bodies are strictly inside this body.
-// Returns the total amount of water bodies that this body contains directly or indirectly
+// Returns the total number of water bodies that this body contains directly or indirectly
 int dfs(int x, int y, int& zone)
 {
     int ret = tiles[x][y].type == '#';

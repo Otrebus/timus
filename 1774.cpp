@@ -86,7 +86,6 @@ void makeNetwork(int k, std::vector<std::pair<int, int>>& v)
 // that path is returned along with the augmenting flow size
 std::pair<int, edge*> dfs()
 {
-
     std::vector<std::pair<edge*, int>> s; // Stack for the dfs (much faster than std::stack)
     s.reserve(800000);
     const int inf = 100000;
@@ -102,7 +101,7 @@ std::pair<int, edge*> dfs()
     while(!s.empty())
     {
         auto e = s.back().first; // Edge leading to this node
-        auto maxaug = s.back().second; // The minimally augmentable amount so far so far
+        auto maxaug = s.back().second; // The minimally augmentable amount so far
         auto n = e->to; // Current node
         n->visits = visits; // Mark visited
         if(n == psink) // We reached the sink, terminate
@@ -171,7 +170,7 @@ std::vector<std::pair<int, int>> solve(int k, std::vector<std::pair<int, int>>& 
     } while(pathaug);
 
     // When done finding all augmented paths, the total flow increase compared to the empty network
-    // should be equal to two times the amount of magicians; otherwise we couldn't satisfy our
+    // should be equal to two times the number of magicians; otherwise we couldn't satisfy our
     // customer demand
     if(totaug != v.size()*2)
         return std::vector<std::pair<int, int>>();

@@ -6,25 +6,25 @@
  * This works since a component is pairable if and only if it has an even number of edges; a proof
  * sketch follows (with the component referred to as a "graph"):
  *
- *   If a graph is pairable: 
- * Every pair in the graph consists of an even number of edges (2), so the entire graph must 
+ *   If a graph is pairable:
+ * Every pair in the graph consists of an even number of edges (2), so the entire graph must
  * also be of even size.
  *
  *   If a graph has an even number of edges:
- * Every simple connected graph can be turned into a tree where each edge e of the graph is a node 
- * of the tree, and the incident edges of e are either the children of e, or the children of some 
- * other part of the tree. This tree can be constructed via for example depth-first search. If 
- * every tree of some even size has pairable edges, then every graph also does, since we can just 
- * re-attach the edges to form the original graph. The proof is by strong induction over the size 
- * of the tree. An even-sized tree of two nodes is trivially pairable. Assume that every even tree 
- * of size <= k is pairable, and that we are given a graph of size k+2. We can form a tree with one 
- * of the nodes as root, which has a set of subtrees as children. All the even-sized subtrees are 
+ * Every simple connected graph can be turned into a tree where each edge e of the graph is a node
+ * of the tree, and the incident edges of e are either the children of e, or the children of some
+ * other part of the tree. This tree can be constructed via for example depth-first search. If
+ * every tree of some even size has pairable edges, then every graph also does, since we can just
+ * re-attach the edges to form the original graph. The proof is by strong induction over the size
+ * of the tree. An even-sized tree of two nodes is trivially pairable. Assume that every even tree
+ * of size <= k is pairable, and that we are given a graph of size k+2. We can form a tree with one
+ * of the nodes as root, which has a set of subtrees as children. All the even-sized subtrees are
  * pairable by the induction assumption, and except for these even-sized subtrees there is an uneven
- * amount of uneven-sized subtrees attached to the root edge, which are attached onto the two 
- * vertices of the root edge, with one vertex having an uneven number of uneven-sized trees and the 
- * other an even number of uneven-sized trees. The latter constitutes an even-sized tree and is 
- * pairable by the induction assumption. The former can be linked together with the root edge into 
- * an even sized tree, which is also pairable. Hence, the entire tree of size k+2 is pairable, and 
+ * number of uneven-sized subtrees attached to the root edge, which are attached onto the two
+ * vertices of the root edge, with one vertex having an uneven number of uneven-sized trees and the
+ * other an even number of uneven-sized trees. The latter constitutes an even-sized tree and is
+ * pairable by the induction assumption. The former can be linked together with the root edge into
+ * an even sized tree, which is also pairable. Hence, the entire tree of size k+2 is pairable, and
  * by induction all trees, and hence their original corresponding graphs.
  *
  * Performance:

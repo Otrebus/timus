@@ -6,7 +6,7 @@
  * the "successor" (as defined by the problem) of some soldier, we start at his leaf, bubble up
  * a subtraction through the tree, and start traversing the tree from the leaf with the node 
  * keys to our help to find his successor - at each node of the tree we can use its key to 
- * skip an amount of soldiers by not visiting the left subtree. For example, if we need to skip
+ * skip an number of soldiers by not visiting the left subtree. For example, if we need to skip
  * an additional 5 soldiers, and are at a node whose left child has a key of 3, we skip that subtree
  * and keep searching in the right subtree for the other 2 soldiers to skip. The solution is
  * somewhat lengthy and there exist shorter ones.
@@ -101,12 +101,12 @@ public:
         }
         node = bottom + current;
 
-        int k = step; // The remaining amount of soldiers that we need to skip
+        int k = step; // The remaining number of soldiers that we need to skip
         enum source { left, right, up }; // The direction we arrived from to a node
         source source = right;
         
         // Our main routine - start at a leaf, search our way through the tree until we have
-        // skipped the amount of soldiers that need to be skipped
+        // skipped the number of soldiers that need to be skipped
         while(k)
         {
             int lc = leftchild(node);

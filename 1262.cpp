@@ -4,7 +4,7 @@
  * Each digit can not clash with any adjoining digits given the (redundant and overcomplicated) 
  * rules, so we can simply scan through the string and replace it with a given pseudo numeral 
  * that fulfills the rules in isolation. For example, the digit 7*10^x can be replaced by 
- * [5*10^x][1*10^x][1*10^x] so the amount of letters in this numeral is 3.
+ * [5*10^x][1*10^x][1*10^x] so the number of letters in this numeral is 3.
  *
  * Performance:
  * O(n), runs in 0.001s and uses 192KB of memory.

@@ -8,15 +8,15 @@
  * First, simply add A[k] to A[k+1]. This is the number of strings with k+1 characters that end 
  * with c that are valid, at least if you don't consider c. If c is the last letter of a forbidden
  * string, we might however have overestimated our solution, so we need to start subtracting the
- * amount of strings of length k+1 that have a forbidden string as suffix that ends with c.
+ * number of strings of length k+1 that have a forbidden string as suffix that ends with c.
  * Therefore, for each such string of length l, we subtract A[k-l] from A[k+1], since that is the
- * amount of otherwise valid strings that happen to end exactly in that forbidden string. However,
+ * number of otherwise valid strings that happen to end exactly in that forbidden string. However,
  * there is one more adjustment we need to make. There might be a string straddling the valid part
  * of the string and the forbidden part of the string. For example, let's say we have forbidden
  * strings aabb and bbcc in this situation:
  * We add c to the string KKKKKK (K here means all possibilities of characters), and end up with
  * KKKKKKc and need to remove all strings that end with bbcc, that is, KKKbbcc, from the solution.
- * This amount is equal to the number of valid strings of three characters (KKK). However, when we
+ * This number is equal to the number of valid strings of three characters (KKK). However, when we
  * do this we also remove strings that look like Kaabbcc, which was never counted in the first 
  * place! This is where the array F comes in - we re-add all the strings of length 5 that end in
  * aabb (but have no other internal forbidden strings, otherwise we would have to recurse).

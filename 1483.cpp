@@ -4,7 +4,7 @@
  * The lowest score for any team on first place is if all teams play all draws, and the highest
  * score for any team on last place is if all teams end up on the same place and win against 
  * half of the other teams, and lose against the other teams, with one draw if playing an uneven 
- * amount of teams.
+ * number of teams.
  *
  * Performance:
  * Constant, runs in 0.001s and uses 196KB of memory.

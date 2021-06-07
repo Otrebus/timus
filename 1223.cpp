@@ -14,8 +14,8 @@
  * The solution for A[s, t] is then the minimum of all these solutions for the different k's, plus
  * one try.
  *
- * To optimize this, we note that given a higher than logarithmic amount of eggs to any given floor
- * we know the answer directly (just a binary search with a logarithmic amount of tries), and that
+ * To optimize this, we note that given a higher than logarithmic number of eggs to any given floor
+ * we know the answer directly (just a binary search with a logarithmic number of tries), and that
  * the trials for 1 <= k <= v yield a a convex pattern of results.
  *
  * Performance:

@@ -6,7 +6,7 @@
  * element greater than zero, and one wall for all the ones left out.
  *
  * Performance:
- * O(nk) where n is the size of the input array and k is the largest amount of a single kind of
+ * O(nk) where n is the size of the input array and k is the largest number of a single kind of
  * diploma. Runs the tests in 0.001s using 196KB memory.
  */
 

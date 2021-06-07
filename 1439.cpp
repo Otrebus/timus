@@ -1,7 +1,7 @@
 /* 1439. Battle with You-Know-Who - http://acm.timus.ru/problem.aspx?num=1439
  *
  * Strategy:
- * Use an augmented logarithmic lookup/insert data structure, that keeps track of the amount of
+ * Use an augmented logarithmic lookup/insert data structure, that keeps track of the number of
  * elements in each "subdivision", to represent the deleted doors. In this case, an augmented
  * skip list is used.
  *

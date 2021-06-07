@@ -7,7 +7,7 @@
  * actual most recent valid timeout of all blocks.
  *
  * Performance:
- * O(Q log N), where Q is the amount of requests. Runs the tests in 0.249s using 1,988KB memory.
+ * O(Q log N), where Q is the number of requests. Runs the tests in 0.249s using 1,988KB memory.
  */
 
 #include <iostream>

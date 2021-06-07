@@ -5,7 +5,7 @@
  * letter. If so, substitute the word. Otherwise, leave everything else intact.
  *
  * Performance:
- * Running time is proportional to the number of input words times the amount of words in the
+ * Running time is proportional to the number of input words times the number of words in the
  * dictionary; runs the test set in 0.001s using 432KB memory.
  */
 

@@ -3,7 +3,7 @@
  * Strategy:
  * From the input position, do a breadth first search using the 16 possible moves and keep distance
  * of each visited position memorized in a cache. Whenever an earlier configuration is encountered
- * it means we have already visited this position with fewer amounts of moves. Each position is
+ * it means we have already visited this position with a fewer number of moves. Each position is
  * represented as a 16-bit value, with b being 1 and w being 0.
  *
  * Performance:

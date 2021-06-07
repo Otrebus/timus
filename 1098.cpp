@@ -1,7 +1,7 @@
 /* 1098. Questions - http://acm.timus.ru/problem.aspx?num=1098
  *
  * Strategy:
- * Build a heap-like tree on top of the string that keeps track of the amount of letters in each 
+ * Build a heap-like tree on top of the string that keeps track of the number of letters in each
  * subheap, like so (for the input "QUESTION"):
  *
  *                                             5
@@ -52,7 +52,7 @@ int main()
             str[p++] = c;
     str[p] = 0;
 
-    // Find the right size of the heap. The amount of leaves is the first power of 2 above the
+    // Find the right size of the heap. The number of leaves is the first power of 2 above the
     // length of the string, and we need twice that
     for(sz = 1; sz*2 < p*4; sz *= 2);
     // Initialize all leaves to 1 and the rest of the tree nodes to the sum of its children

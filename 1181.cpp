@@ -1,7 +1,7 @@
 /* 1181. Cutting a Painted Polygon - http://acm.timus.ru/problem.aspx?num=1181
  *
  * Strategy:
- * First, let's prove by induction over the amount of vertices that any graph with the given
+ * First, let's prove by induction over the number of vertices that any graph with the given
  * properties is cuttable into triangles. Let the base case be for n = 3; this is a triangle
  * and vacuously cuttable. Let n = k and assume that all convex polygons with size < k are
  * cuttable. If there is only one vertex of some given color, we can simply draw one cutting line

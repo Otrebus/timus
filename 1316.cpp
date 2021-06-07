@@ -1,12 +1,12 @@
 /* 1316. Electronic Auction - http://acm.timus.ru/problem.aspx?num=1316
  *
  * Strategy:
- * Maintain a Fenwick tree where each index corresponds to the amount of people who have bid exactly
+ * Maintain a Fenwick tree where each index corresponds to the number of people who have bid exactly
  * that amount of money. For each sale we can then quickly determine how many people have bid more
  * than that amount, which is the central mechanism in determining the final answer.
  *
  * Performance:
- * O(n log d) where n is the amount of operations and d is the maximum bid, runs in 0.093s using
+ * O(n log d) where n is the number of operations and d is the maximum bid, runs in 0.093s using
  * 4108KB memory.
  */
 

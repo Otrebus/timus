@@ -7,9 +7,9 @@
  * digit difference of a four digit  number can be between -18 and 18. For each number length, each
  * possible digit difference in this length and each possible sum in this digit difference, we store
  * the number of different digits satisfying this constraint. For example, 3070 and 2080 are two 
- * different numbers with the same digit difference and digit sum. The amount of such numbers is 
+ * different numbers with the same digit difference and digit sum. The number of such numbers is 
  * stored as t[12][10] below. Such an array is built for numbers of length i by using the array for
- * digits of length i-1. Finally, the array for length N/2 is used to calculate the amount of 
+ * digits of length i-1. Finally, the array for length N/2 is used to calculate the number of 
  * numbers requested.
  *
  * Performance:

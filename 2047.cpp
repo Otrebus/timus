@@ -4,7 +4,7 @@
  * First, write a program that by brütë fôrcê \m/ finds some sum(k), for k = 100000, that satisfies
  * the recurrence given by the problem,
  *    sum_(k-1) = sum(k) - div(sum(k)), and a_k = div(sum(k))
- * (where sum(j) is a_1 + .. + a_j, and div(j) is the amount of divisors of j) and then use this 
+ * (where sum(j) is a_1 + .. + a_j, and div(j) is the number of divisors of j) and then use this 
  * sum(k) and recurrence to construct the answer sequence.
  *
  * Performance:

@@ -2,7 +2,7 @@
  *
  * Strategy:
  * The problem asks us to construct the number N through some composition consisting of an uneven
- * amount of factors besides 1. We can always combine any of the odd factors in the prime 
+ * number of factors besides 1. We can always combine any of the odd factors in the prime 
  * factorization to an arbitrary odd factor, but no 2's can be combined into a factor since even 
  * factors above 2 are not allowed according to the problem description. Therefore, we divide out
  * all twos, and note if the remaining number is 1, prime, or a composition, which will allow us 

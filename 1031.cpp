@@ -7,7 +7,7 @@
  * the costs of the various tickets into the queues, for the upcoming stations.
  *
  * Performance:
- * O(n) where n is the amount of stations considered, since we loop over those stations, and push
+ * O(n) where n is the number of stations considered, since we loop over those stations, and push
  * and pop from the queues at most a constant number for each station. The solution runs the tests
  * in 0.015s, which is equivalent to or much faster than most solutions, and uses 524KB of memory.
  */

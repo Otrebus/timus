@@ -2,7 +2,7 @@
  *
  * Strategy:
  * Greedy. Cover the required railways with (S/L)*N rails until the last N S%L-sized stubs remain.
- * Then, each new track can be used to cover L/(S%L) stubs, so the amount of extra rails required
+ * Then, each new track can be used to cover L/(S%L) stubs, so the number of extra rails required
  * is N/(L/(S%L)), plus a final track if there is a remainder N%(L/(S%L)).
  *
  * Performance:

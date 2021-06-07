@@ -4,7 +4,7 @@
  * Sort the lines by the leftmost endpoints, and maintain a data structure ordered by the rightmost
  * endpoints (in this case a plain vector) where each index contains the solution of the problem for 
  * the lines that we have processed so far that have a rightmost endpoint below the position equal
- * to the index (actually the amount of endpoints we use rather than throw away). Go through each
+ * to the index (actually the number of endpoints we use rather than throw away). Go through each
  * leftmost endpoint in the sorted list and update the data structure accordingly. This is of O(n^2)
  * complexity which is enough for a problem of such small size, but there is an O(n log n) algorithm
  * as below:

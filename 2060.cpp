@@ -15,7 +15,7 @@
  * for each longest palindrome P at position i in the input string, we mark where P begins such a
  * sequence of characters where at each point a new subpalindrome starts (this is at position i-L 
  * where L is the length of P), and where such a sequence ends. After we've done so for every
- * palindrome, we can then "integrate" this to get the total amount of palindromes that start at any
+ * palindrome, we can then "integrate" this to get the total number of palindromes that start at any
  * given point.
  *   After this we go through each point between the characters in the string and multiply together 
  * the number of palindromes that start and begin at such a point, and sum all those products

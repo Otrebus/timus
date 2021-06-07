@@ -1,10 +1,10 @@
 /* 1259. How to Become Star? [sic] - http://acm.timus.ru/problem.aspx?num=1259
  *
  * Strategy:
- * We are looking for solutions of the form N*alpha = 2*k*pi, where 0 < alpha < pi, so the amount of
+ * We are looking for solutions of the form N*alpha = 2*k*pi, where 0 < alpha < pi, so the number of
  * different stars that we can find is the number of solutions to alpha = 2*pi*k/N, for alphas < pi
  * (k < N/2), where for each k generating an alpha we want k/N in lowest terms (have a gcd of 1) 
- * since otherwise that would be a solution for another star of a lower amount of vertices, retraced
+ * since otherwise that would be a solution for another star of a lower number of vertices, retraced
  * gcd(k, N) times.
  * 
  * Performance:

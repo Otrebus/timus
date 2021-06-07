@@ -6,7 +6,7 @@
  * the two current biggest remaining groups (we remove one person from each group each time we
  * exchange presents), in which case we end up with zero remaining members at the end unless
  * the biggest group contains more members than all other groups combined. In the latter case,
- * the result is the difference in the amount of members between the initial size of the majority
+ * the result is the difference in the number of members between the initial size of the majority
  * group and the rest of the groups.
  *
  * Performance:
