@@ -4,7 +4,7 @@
  * Set t to acos(y) to get the y coordinate right, increase t by 2pi until x meets the precision.
  *
  * Performance:
- * O(1/t), runs the tests in 0.015s using 16KB memory.
+ * O(1/ε), runs the tests in 0.015s using 16KB memory.
  */
 
 #include <iostream>
