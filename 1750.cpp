@@ -5,7 +5,7 @@
  * doesn't cross the gully.
  *
  * Performance:
- * O(1), runs the tests in 0.125s using 300KB memory.
+ * O(n), runs the tests in 0.125s using 300KB memory.
  */
 
 #include <iostream>
