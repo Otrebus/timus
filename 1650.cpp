@@ -3,7 +3,7 @@
  * Strategy:
  * Maintain a set of the most money-dense cities. Every time a new day is given in the input, update
  * the score using the top values in the set as data.
- .
+ *
  * Performance:
  * O(k log k), runs the test ensemble in 0.39s using 10,480KB memory.
  */
@@ -36,7 +36,7 @@ std::unordered_map<std::string, Person*> personMap; // Maps names into people
 std::map<std::string, City*> cityMap; // Maps names into cities
 std::set<std::pair<long long, City*>,std::greater<>> scoreBoard; // The cities ordered by money
 
- int main()
+int main()
 {
     std::ios::sync_with_stdio(false);
     int n, m, k, c = 0;
