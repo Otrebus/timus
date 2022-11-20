@@ -7,8 +7,8 @@
  * character value to compute the rolling hash for the squares as we march horizontally.
  *
  * Performance:
- * O(W^2 log W) where W = max(N, M) assuming not too many hash collisions, runs in 0.468s using
- * 10,508KB memory.
+ * O(W^2 log W) where W = max(N, M) assuming not too many hash collisions, runs in 0.406s using
+ * 19,732KB memory.
  */
 
 #include <algorithm>
@@ -16,30 +16,30 @@
 #include <unordered_map>
 #include <unordered_set>
 
-const unsigned int basechar = 587; // The base for the rolling hash for individual chars
-const unsigned int basecol = 239; // The base for the rolling hash for the vertical strings
+using ll = unsigned long long;
+
+const ll basechar = 834283; // The base for the rolling hash for individual chars
+const ll basecol = 1834303; // The base for the rolling hash for the vertical strings
 const int maxn = 500;
 
 unsigned char A[maxn][maxn]; // The input
-unsigned int C[maxn][maxn]; // C[i][j] is the hash for the vertical string starting at (i, j)
-unsigned int S[maxn][maxn]; // Same as above, but for the square at (i, j)
+ll C[maxn][maxn]; // C[i][j] is the hash for the vertical string starting at (i, j)
+ll S[maxn][maxn]; // Same as above, but for the square at (i, j)
 
 // Searches the array size NxM for matching squares of size K, returning true if one was found and
 // the locations in the additional parameter slots
-bool solve(int N, int M, int K, int& x1, int& y1, int& x2, int& y2)
-{
+bool solve(int N, int M, int K, int& x1, int& y1, int& x2, int& y2) {
     // To save space, we hash squares to a coordinate first, and only a vector of coordinates
     // once we have a hash collision in the first set
-    std::unordered_map<unsigned int, std::pair<short, short>> set;
-    std::unordered_map<unsigned int, std::vector<std::pair<short, short>>> map;
+    std::unordered_map<ll, std::pair<short, short>> set;
+    std::unordered_map<ll, std::vector<std::pair<short, short>>> map;
 
-    int charN = 1, colN = 1; // base^N for characters and columns
+    ll charN = 1, colN = 1; // base^N for characters and columns
     for(int i = 0; i < K; i++)
         charN *= basechar, colN *= basecol;
 
     // First, compute the rolling hashes for the strings
-    for(int x = 0; x < M; x++)
-    {
+    for(int x = 0; x < M; x++) {
         C[x][0] = 0;
         for(int y = 0; y < K; y++)
             C[x][0] = (C[x][0] + A[x][y])*basechar;
@@ -48,11 +48,9 @@ bool solve(int N, int M, int K, int& x1, int& y1, int& x2, int& y2)
     }
 
     // Next, use the above hashes to compute hashes for the squares
-    for(int y = 0; y + K <= N; y++)
-    {
+    for(int y = 0; y + K <= N; y++) {
         S[0][y] = 0;
-        for(int x = 0; x + K <= M; x++)
-        {
+        for(int x = 0; x + K <= M; x++) {
             if(x == 0)
                 for(int x = 0; x < K; x++)
                     S[0][y] = (S[0][y] + C[x][y])*basecol;
@@ -62,20 +60,18 @@ bool solve(int N, int M, int K, int& x1, int& y1, int& x2, int& y2)
             // As we insert this hash into the hash set we check if it was already found
             // and if so we do a manual comparison
             auto it = set.find(S[x][y]);
-            if(it != set.end())
-            {
+            if(it != set.end()) {
                 auto& v = map[S[x][y]]; 
                 if(v.empty())
                     v.push_back(it->second);
-                for(auto p : v)
-                {
+
+                for(auto p : v) {
                     bool match = true;
                     for(int i = 0; match && i < K; i++)
                         for(int j = 0; match && j < K; j++)
                             if(A[p.first+i][p.second+j] != A[x+i][y+j])
                                 match = false;
-                    if(match)
-                    {
+                    if(match) {
                         x1 = p.first; y1 = p.second; x2 = x; y2 = y;
                         return true;
                     }
@@ -89,13 +85,11 @@ bool solve(int N, int M, int K, int& x1, int& y1, int& x2, int& y2)
     return false;
 }
 
-int main()
-{
+int main() {
     int N, M, x1, x2, y1, y2;
     scanf("%d %d", &N, &M);
 
-    for(int j = 0; j < N; j++)
-    {
+    for(int j = 0; j < N; j++) {
         char input[501];
         scanf("%s", input);
         for(int i = 0; i < M; i++)
@@ -103,8 +97,7 @@ int main()
     }
     bool found = false;
     int left = 1, right = std::min(N, M);
-    while (right >= left) // Binary search
-    {
+    while (right >= left) { // Binary search
         int mid = (left + right)/2;
         if(solve(N, M, mid, x1, y1, x2, y2))
             found = true, left = mid + 1;
