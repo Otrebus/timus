@@ -10,7 +10,7 @@
  * the total cost.
  *
  * Performance:
- * Runs the tests in 0.001s using 264KB memory
+ * Runs the tests in 0.001s using 264KB memory.
  */
 
 #include <vector>
