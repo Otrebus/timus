@@ -29,7 +29,7 @@
 
 int A[300][300], B[300][300], C[300][300], n, inf = 1e6;
 
-bool test() { // Check that the solution wokrs
+bool test() { // Check that the solution works
     // Calculate the minimum passed-by billboards
     for(int k = 0; k < n; k++)
         for(int i = 0; i < n; i++)
