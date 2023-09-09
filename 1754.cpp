@@ -1,4 +1,4 @@
-/* 1754. Explosion in a Pyramid - http://acm.timus.ru/problem.aspx?num=1745
+/* 1754. Explosion in a Pyramid - http://acm.timus.ru/problem.aspx?num=1754
  *
  * Strategy:
  * Point/plane distance calculation.

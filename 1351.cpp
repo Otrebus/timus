@@ -1,4 +1,4 @@
-/* 1351. Good Gnusmas – Dead Gnusmas - http://acm.timus.ru/problem.aspx?num=1351
+/* 1351. Good Gnusmas - Dead Gnusmas - http://acm.timus.ru/problem.aspx?num=1351
  *
  * Strategy:
  * For each gnusmas, use the vector product of its position vector and the bounds vectors to make

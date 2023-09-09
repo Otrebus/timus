@@ -1,4 +1,4 @@
-/* 1728. Curse on Team.GOV -  http://acm.timus.ru/problem.aspx?num=1728
+/* 1728. Curse on Team.GOV - http://acm.timus.ru/problem.aspx?num=1728
  *
  * Strategy:
  * Keep track of two sets of teams: teams with three members, represented by the name of the

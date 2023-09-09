@@ -141,15 +141,15 @@ int main() {
 //  
 //      BigInt abs() {
 //          BigInt res = *this;
-//  		res.neg = false;
-//  		return res;
+//          res.neg = false;
+//          return res;
 //      }
 //  
 //      BigInt operator-() const {
-//  		BigInt res = *this;
-//  		res.neg = !neg;
-//  		return res;
-//  	}
+//          BigInt res = *this;
+//          res.neg = !neg;
+//          return res;
+//      }
 //  
 //      BigInt operator+(BigInt b)
 //      {

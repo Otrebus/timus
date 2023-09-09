@@ -32,18 +32,18 @@ double collide(std::pair<Vector3d, Vector3d> s1, std::pair<Vector3d, Vector3d> s
 
     // This is standard sphere-ray intersection stuff
     Vector3d vec = s1.first - s2.first;
-	double C = vec*vec - radius*radius;
-	double B = 2*(vec*dir);
-	double A = dir*dir;
-	double D = (B*B/(4*A) - C)/A;
+    double C = vec*vec - radius*radius;
+    double B = 2*(vec*dir);
+    double A = dir*dir;
+    double D = (B*B/(4*A) - C)/A;
 
-	if(D >= -1e-7)
-	{
+    if(D >= -1e-7)
+    {
         D = std::max(0.0, D);
         double t = -B/(2*A) - sqrt(D);
         // Negative t means one plane started inside another plane's zone which would be bad input
         return (t > 0) ? t : std::numeric_limits<double>::infinity();
-	}
+    }
     else
         return std::numeric_limits<double>::infinity();
 }

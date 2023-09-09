@@ -33,28 +33,28 @@
 #include <string>
 
 int main() {
-	int K;
+    int K;
 
-	std::cin >> K;
+    std::cin >> K;
 
-	std::vector<int> v;
-	std::vector<std::string> out;
-	
-	for(int b = 0; b < 32; b++) {
-		if((1 << b) & K)
-			v.push_back(b);
-	}
+    std::vector<int> v;
+    std::vector<std::string> out;
+    
+    for(int b = 0; b < 32; b++) {
+        if((1 << b) & K)
+            v.push_back(b);
+    }
 
-	int n = v.back() + v.size();
+    int n = v.back() + v.size();
 
-	out.push_back("BELL&RET");
-	for(int i = 1; i <= v.back(); i++) // The power repository
-		out.push_back("CALL " + std::to_string(n-i));
+    out.push_back("BELL&RET");
+    for(int i = 1; i <= v.back(); i++) // The power repository
+        out.push_back("CALL " + std::to_string(n-i));
 
-	for(int i = 0; i < v.size()-1; i++) // The supplemental fill-ins
-		out.push_back("CALL " + std::to_string(n-v[i]-1));
+    for(int i = 0; i < v.size()-1; i++) // The supplemental fill-ins
+        out.push_back("CALL " + std::to_string(n-v[i]-1));
 
-	for(auto it = out.rbegin(); it < out.rend(); it++) { // Print them out in the right order
-		std::cout << *it << std::endl;
-	}
+    for(auto it = out.rbegin(); it < out.rend(); it++) { // Print them out in the right order
+        std::cout << *it << std::endl;
+    }
 }

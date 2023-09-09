@@ -19,7 +19,7 @@
 const int INF = 100000000;
 
 bool HopcroftKarpBfs(int n, int m, const std::vector<std::vector<int>>& E, std::vector<int>& D, 
-	                 std::vector<int>& M)
+                     std::vector<int>& M)
 {
     std::queue<int> Q;
     bool added = false;
@@ -62,7 +62,7 @@ bool HopcroftKarpBfs(int n, int m, const std::vector<std::vector<int>>& E, std::
 }
 
 bool HopcroftKarpDfs(int n, int m, const std::vector<std::vector<int>>& E, 
-	                 std::vector<int>& D, std::vector<int>& M, int r, int parent)
+                     std::vector<int>& D, std::vector<int>& M, int r, int parent)
 {
     if(D[r] == 0)
     {
@@ -73,7 +73,7 @@ bool HopcroftKarpDfs(int n, int m, const std::vector<std::vector<int>>& E,
     {
         int s = *it;
         if((r < n && M[r] == s || r >= n && M[r] != s) && (D[s] == D[r] - 1 
-        	&& HopcroftKarpDfs(n, m, E, D, M, s, r)))
+            && HopcroftKarpDfs(n, m, E, D, M, s, r)))
         {
             if(r >= n)
             {
@@ -93,7 +93,7 @@ bool HopcroftKarpDfs(int n, int m, const std::vector<std::vector<int>>& E,
 }
 
 std::vector<std::pair<int, int>> HopcroftKarp(const int n, const int m, 
-	                                          std::vector<std::pair<int, int>> e)
+                                              std::vector<std::pair<int, int>> e)
 {
     std::vector<std::vector<int>> E(n+m);
     std::vector<int> D(n+m);

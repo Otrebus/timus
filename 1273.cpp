@@ -5,17 +5,17 @@
  * endpoints (in this case a plain vector) where each index contains the solution of the problem for 
  * the lines that we have processed so far that have a rightmost endpoint below the position equal
  * to the index (actually the number of endpoints we use rather than throw away). Go through each
- * leftmost endpoint in the sorted list and update the data structure accordingly. This is of O(n^2)
- * complexity which is enough for a problem of such small size, but there is an O(n log n) algorithm
+ * leftmost endpoint in the sorted list and update the data structure accordingly. This is of O(K^2)
+ * complexity which is enough for a problem of such small size, but there is an O(K log K) algorithm
  * as below:
  * 
  * Sort lines by the left endpoints, and have a segment tree S or similar for point update/range 
  * maximum query for the right endpoints, where S.update(i, v) updates element i to equal value v,
  * and S.max(i) returns the maximum value of any element below i. For each line (i, j) in the sorted
- * list, do S.update(j, S.max(j)). The final result is then N-S.max(N).
+ * list, do S.update(j, S.max(j)). The final result is then K-S.max(K).
  *
  * Performance:
- * O(N^2), using 392KB memory.
+ * O(K^2), runs the tests in 0.001s using 392KB memory.
  */
 
 #include <vector>
@@ -26,10 +26,10 @@ int ans[100];
 
 int main()
 {
-    int N;
-    std::cin >> N;
-    std::vector<std::pair<int, int>> v(N);
-    for(int i = 0; i < N; i++)
+    int K;
+    std::cin >> K;
+    std::vector<std::pair<int, int>> v(K);
+    for(int i = 0; i < K; i++)
         std::cin >> v[i].first >> v[i].second;
     // First we normalize the coordinates so we can index by them directly
     std::sort(v.begin(), v.end(), // Sort by rightmost endpoints
@@ -41,5 +41,5 @@ int main()
         v[i].first = i;
     for(int i = 0; i < v.size(); i++) // The actual computation
         ans[v[i].second] = 1 + *std::max_element(ans, ans+v[i].second);
-    std::cout << N - *std::max_element(ans, ans+N);
+    std::cout << K - *std::max_element(ans, ans+K);
 }

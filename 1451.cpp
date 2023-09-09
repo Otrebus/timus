@@ -36,7 +36,7 @@ vec ternary(vec s, vec dir) {
     // Ternary search of f along the line that passes through s in the direction dir
     vec L = s + dir*100;
     vec R = s - dir*100;
-    for(int i = 0; (R - L).length() > 1e-8; i++)
+    while((R - L).length() > 1e-8)
     {
         ld x = f(L + (R - L)/3);
         ld y = f(L + (R - L)*2.0L/3);

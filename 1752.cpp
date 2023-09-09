@@ -65,13 +65,13 @@ void dfs(node* const n)
         }
     }
     n->maxDepth = std::max(n->depth, std::max(n->deepestChild[0]->maxDepth, 
-    	                                      n->deepestChild[1]->maxDepth));
+                                              n->deepestChild[1]->maxDepth));
 }
 
 // Calculates depth array positions and granduncles
 void dfs2(node* const n)
 {
-	// This is part of the longest path from our parent to a child, just extend the array
+    // This is part of the longest path from our parent to a child, just extend the array
     if(n->parent[0] && n->parent[0]->deepestChild[0] == n)
     {
         n->depthArrayPos = n->parent[0]->depthArrayPos + 1;
@@ -88,10 +88,10 @@ void dfs2(node* const n)
         auto candidate = n->parent[0]->deepestChild[0] == n ? n->parent[0]->deepestChild[1] 
                                                             : n->parent[0]->deepestChild[0];
         // If we have a proper candidate for a new granduncle and something to compare it to, and it
-		// is actually a longer path, then assign it - otherwise, keep the parents granduncle
+        // is actually a longer path, then assign it - otherwise, keep the parents granduncle
         if(candidate->id == 0 || n->parent[0]->grandUncle != 0 
-        	 && candidate->maxDepth - candidate->depth < n->parent[0]->grandUncle->maxDepth 
-        	    - n->parent[0]->grandUncle->depth + n->depth - n->parent[0]->grandUncle->depth)
+             && candidate->maxDepth - candidate->depth < n->parent[0]->grandUncle->maxDepth 
+                - n->parent[0]->grandUncle->depth + n->depth - n->parent[0]->grandUncle->depth)
              n->grandUncle = n->parent[0]->grandUncle;            
         else
              n->grandUncle = candidate;
@@ -116,7 +116,7 @@ inline int find(int n, int dist)
         return 0;
     // Node can be found by turning at our granduncle and then going down the tree there
     else if(node->grandUncle != 0 && dist <= node->depth - node->grandUncle->depth + 2 
-    	                              + node->grandUncle->maxDepth - node->grandUncle->depth)
+                                      + node->grandUncle->maxDepth - node->grandUncle->depth)
         return A[dist-(node->depth-node->grandUncle->depth+2)+node->grandUncle->depthArrayPos]->id;
     else
         return 0;
