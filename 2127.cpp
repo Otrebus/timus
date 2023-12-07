@@ -106,7 +106,7 @@ ll calc() {
         if(R[y] != i) {
             // Found one, swap it up to the current index to make it pivot
             std::swap(R[invR[i]], R[y]);
-            invR[R[i]] = i;
+            invR[R[invR[i]]] = invR[i];
             invR[R[y]] = y;
             ret = mod(-ret);
         }
