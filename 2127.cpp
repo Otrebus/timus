@@ -144,3 +144,4 @@ int main() {
         std::sort(H[i].begin(), H[i].end());
     printf("%lld", calc());
 }
+//this code got wa 9
